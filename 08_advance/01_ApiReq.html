@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body style="background-color:#212121; color:aliceblue; ">
+     0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete.
+</body>
+<script>
+    const Rurl = 'https://api.github.com/users/hiteshchoudhary'
+    const Xmr = new XMLHttpRequest();
+    Xmr.open('GET', Rurl);
+    Xmr.onreadystatechange=function(){
+      console.log(Xmr.readyState); // 0
+      if(Xmr.readyState === 4){
+         const data = JSON.parse(this.responseText)
+         console.log(data.followers);
+    }
+}
+    Xmr.send();
+
+
+</script>
+</html>
